@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Mover : MonoBehaviour
+public class BombMover : MonoBehaviour
 {
     public float speed;
 
@@ -11,7 +11,7 @@ public class Mover : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         rb.velocity = transform.forward * speed;
-        if(Input.GetButton("Fire2"))
+        if (Input.GetButton("Fire3"))
         {
             rb.velocity = transform.forward * speed * 2;
         }

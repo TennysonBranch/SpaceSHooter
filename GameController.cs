@@ -15,13 +15,16 @@ public class GameController : MonoBehaviour
 
     public Text winText;
     public Text ScoreText;
-    private int score;
+    public static int score;
     public Text restartText;
     public Text gameOverText;
 
 
     private bool gameOver;
     private bool restart;
+
+    public AudioSource musicSource;
+    public AudioClip musicClip;
 
     void Start()
     {
@@ -33,6 +36,9 @@ public class GameController : MonoBehaviour
         score = 0;
         UpdateScore();
         StartCoroutine (SpawnWaves());
+        float getscrollspeed = BGScroller.scrollspeed;
+        BGScroller.scrollspeed = -1;
+
     }
 
 
@@ -74,6 +80,7 @@ public class GameController : MonoBehaviour
                 restartText.text = "Press 'T' for Restart";
                 restart = true;
                 break;
+               
             }
         }
     }
@@ -92,6 +99,15 @@ public class GameController : MonoBehaviour
             winText.text = "You win! Game Created by Tennyson Branch";
             gameOver = true;
             restart = true;
+            float getscrollspeed = BGScroller.scrollspeed;
+            BGScroller.scrollspeed = -10;
+            // int getscore = GameController.score;
+            // 
+            //this needs work, play whenever score increases past 100
+            //introduce an object that appears when score =100 that plays music
+            musicSource.clip = musicClip;
+            musicSource.Play();
+
         }
     }
 
@@ -99,6 +115,7 @@ public class GameController : MonoBehaviour
     {
         gameOverText.text = "Game Over!";
         gameOver = true;
+
     }
 }
 

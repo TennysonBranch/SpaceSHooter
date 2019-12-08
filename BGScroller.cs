@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BGScroller : MonoBehaviour
 {
-    public float scrollspeed;
+    public static float scrollspeed;
     public float tilseSizedZ;
-
     private Vector3 startPosition;
     // Start is called before the first frame update
     void Start()
@@ -19,5 +19,8 @@ public class BGScroller : MonoBehaviour
     {
         float newPosition = Mathf.Repeat (Time.time*scrollspeed, tilseSizedZ);
         transform.position = startPosition + Vector3.forward * newPosition;
+        //make it so if win is true scrollspeed increases
+        
+
     } 
 }
